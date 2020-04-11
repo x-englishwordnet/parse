@@ -36,5 +36,5 @@ esac
 OFS=$3
 
 echo "${INDIR}"
-java -cp ewn-grind.jar org.ewn.parse.LineParser "${INDIR}" ${POS} ${OFS} 
+java -cp ewn-parse.jar io.github.xenglishwordnet.parse.LineParser "${INDIR}" ${POS} ${OFS} 
 
