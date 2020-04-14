@@ -6,13 +6,11 @@
 	<groupId>io.github.x-englishwordnet</groupId>
 	<artifactId>parse</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
 	<name>parse</name>
 	<description>Parse WordNet WNDB file into pojos.</description>
     <url>https://github.com/x-englishwordnet/parse</url>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 
 			<plugin>
