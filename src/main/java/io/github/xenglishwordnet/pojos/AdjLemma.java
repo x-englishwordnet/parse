@@ -35,6 +35,7 @@ public class AdjLemma extends Lemma
 	 *
 	 * @param normalizedString
 	 *            normalized string
+	 * @return adj lemma if input matches pattern or standard lemma
 	 */
 	public static Lemma makeAdj(NormalizedString normalizedString)
 	{
@@ -90,6 +91,7 @@ public class AdjLemma extends Lemma
 		return super.equals(obj);
 	}
 
+	@SuppressWarnings("EmptyMethod")
 	@Override
 	public int hashCode()
 	{

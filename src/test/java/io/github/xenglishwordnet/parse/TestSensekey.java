@@ -1,19 +1,16 @@
 package io.github.xenglishwordnet.parse;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import io.github.xenglishwordnet.pojos.ParsePojoException;
+import io.github.xenglishwordnet.pojos.Pos;
+import io.github.xenglishwordnet.pojos.Sensekey;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-
-import io.github.xenglishwordnet.pojos.ParsePojoException;
-import io.github.xenglishwordnet.pojos.Pos;
-import io.github.xenglishwordnet.pojos.Sensekey;
+import static org.junit.Assert.*;
 
 public class TestSensekey
 {
@@ -24,8 +21,7 @@ public class TestSensekey
 	private static final String[] lemmas = { "one", "two%three", "two%%three", "two%%%%three", "two%%%%%three", "two%", "%three", "two%%", "%%three", "normal",
 			"two:three", "two::three", "two::::three", "two:::::three", "two:", ":three", "two::", "::three" };
 
-	@Test
-	public void sk_escape() throws IOException
+	@Test public void sk_escape() throws IOException
 	{
 		List<String> heads = new ArrayList<>(Arrays.asList(lemmas));
 		heads.add(0, "");
@@ -52,11 +48,11 @@ public class TestSensekey
 		}
 	}
 
-	@Test
-	public void sk_parse() throws IOException, ParsePojoException
+	@Test public void sk_parse() throws IOException, ParsePojoException
 	{
 		String[] sensekeys = { "go_to_the_dogs%2:30:00::", "half-size%5:00:00:small:00", "Yahoo!%1:10:00::", "Prince_William,_Duke_of_Cumberland%1:18:00::",
-				"Capital:_Critique_of_Political_Economy%1:10:00::", "Hawai'i%1:15:00::", "Hawai'i_Volcanoes_National_Park%1:15:00::" };
+				"Capital:_Critique_of_Political_Economy%1:10:00::", "Hawai'i%1:15:00::", "Hawai'i_Volcanoes_National_Park%1:15:00::", "20/20%1:09:00::",
+				"TCP/IP%1:10:00::" };
 
 		Sensekey sk1 = Sensekey.parseSensekey(sensekeys[0]);
 		assertNotNull(sk1);
@@ -82,6 +78,17 @@ public class TestSensekey
 			assertNotNull(sk);
 			System.out.println(sk.getWord().toString());
 		}
+	}
+
+	@Test public void sk_parse2() throws IOException, ParsePojoException
+	{
+		String sensekey = "100~%1:10:00::";
+
+		Sensekey sk1 = Sensekey.parseSensekey(sensekey);
+		assertNotNull(sk1);
+		assertEquals(sk1.getWord().toString(), "100%");
+		assertEquals(sk1.getLemma().toString(), "100%");
+		System.out.println(sk1.getWord().toString());
 	}
 
 	private static String generate(String lemma, int pos, int lexfile, int lexid, String head, int headid)

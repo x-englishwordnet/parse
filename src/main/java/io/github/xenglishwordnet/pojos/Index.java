@@ -99,5 +99,4 @@ public class Index extends CoreIndex
 		sb.append(this.tagCnt);
 		return sb.toString();
 	}
-
 }

@@ -9,6 +9,11 @@ import java.util.regex.Pattern;
  */
 public class Sensekey
 {
+	private static final Pattern patternBreak = Pattern.compile("(?<!\\u005C)%");
+
+	//public static final String ESCAPED_PERCENT = "\\%";
+	public static final String ESCAPED_PERCENT = "~";
+
 	private final String key;
 
 	private final NormalizedString word; // may contain uppercase
@@ -102,9 +107,6 @@ public class Sensekey
 		}
 	}
 
-	//public static final String ESCAPED_PERCENT = "\\%";
-	public static final String ESCAPED_PERCENT = "/";
-
 	/**
 	 * Decode sensekey string into fields
 	 *
@@ -187,6 +189,4 @@ public class Sensekey
 	{
 		return "word=" + this.word + " lexid=" + this.lexId + " lexdomain=" + this.lexDomain + " pos=" + this.pos;
 	}
-
-	static private Pattern patternBreak = Pattern.compile("(?<!\\u005C)%");
 }
