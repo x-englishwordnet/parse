@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 import io.github.xenglishwordnet.pojos.ParsePojoException;
 import io.github.xenglishwordnet.pojos.Synset;
 
-public class LineParser
+public class DataParser1
 {
 	public static void main(String[] args) throws IOException, ParsePojoException
 	{

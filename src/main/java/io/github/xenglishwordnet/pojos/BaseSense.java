@@ -28,6 +28,6 @@ public class BaseSense
 	@Override
 	public String toString()
 	{
-		return "(w=" + this.lemma.toString() + "-s=" + this.synsetId.toString() + "-n=" + this.senseNum + ")";
+		return "(w=" + this.lemma.toString() + " s=" + this.synsetId.toString() + " n=" + this.senseNum + ")";
 	}
 }
